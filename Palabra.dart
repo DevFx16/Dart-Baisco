@@ -1,9 +1,35 @@
-main(List<String> args) {
+class Palabras {
   String Palabra = 'Hola Mundo He Nacido';
-  List<String> Array = Palabra.split(' ');
-  String InvertidaOrden = '';
-  for (var i = Array.length - 1; i >= 0; i--) {
-    InvertidaOrden += Array[i] + ' ';
+
+  Palabras() {
+    print(InvertirOracion(Palabra));
+    print(InvertirPalabras(Palabra));
+    print(InvertirOracion(InvertirPalabras(Palabra)));
   }
-  print(InvertidaOrden);
+
+  String InvertirOracion(String Item) {
+    List<String> Array = Item.split(' ');
+    String OracionInvertida = '';
+    for (var i = Array.length - 1; i >= 0; i--) {
+      OracionInvertida += Array[i] + ' ';
+    }
+    return OracionInvertida.replaceRange(OracionInvertida.length - 1, OracionInvertida.length, '');
+  }
+
+  InvertirPalabras(String Item) {
+    List<String> Array = Item.split(' ');
+    String OracionInvertida = '';
+    for (var item in Array) {
+      String PalabraInv = '';
+      for (var i = item.length - 1; i >= 0; i--) {
+        PalabraInv += item[i];
+      }
+      OracionInvertida += PalabraInv + ' ';
+    }
+    return OracionInvertida.replaceRange(OracionInvertida.length - 1, OracionInvertida.length, '');
+  }
+}
+
+main(List<String> args) {
+  new Palabras();
 }
